@@ -8,7 +8,7 @@ composer_package_name=$(jq '.name' $composer_project_path/composer.json)
 git config --global user.name github-actions
 git config --global user.email github-actions@github.com
 echo -n $secret >> token.txt
-gh auth login --with-token < $secret
+gh auth login --with-token $secret
 rm token.txt
 cd $composer_path
 composer config --global github-oauth.github.com $secret
