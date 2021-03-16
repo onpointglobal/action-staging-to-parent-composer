@@ -15,6 +15,8 @@ WORKDIR /ghcli
 
 RUN curl -fsSLO https://github.com/cli/cli/releases/download/v1.7.0/gh_1.7.0_linux_386.tar.gz
 RUN tar -zvxf gh_1.7.0_linux_386.tar.gz -C /usr/local/bin
+RUN mv gh_1.7.0_linux_386/bin/gh /usr/local/bin/
+RUN export PATH=$PATH:/usr/local/gh
 RUN gh --version
 # Copies your code file from your action repository to the filesystem path `/` of the container
 WORKDIR /
