@@ -1,0 +1,28 @@
+# action.yml
+name: 'Staging to Parent with composer'
+description: 'Update parent on every staging change.'
+inputs:
+  branch:  # name of the branch or env
+    description: 'Name of the branch, same ass environment. Available: [staging, production]'
+    required: true
+    default: ''
+  parent_path:  # folder of the parent repo to update composer dependency
+    description: 'Where is the parent repo cloned'
+    required: true
+    default: ''
+  project_path:  # folder of the parent repo to update composer dependency
+    description: 'Where is the proyect cloned'
+    required: true
+    default: ''
+  secret:  # id of input
+    description: 'Secret to update parent repo'
+    required: true
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.branch }}
+    - ${{ inputs.parent_path }}
+    - ${{ inputs.project_path }}
+    - ${{ inputs.secret }}
