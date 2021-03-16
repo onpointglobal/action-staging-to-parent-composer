@@ -3,7 +3,8 @@ FROM php:7.4-fpm-alpine3.12
 
 RUN apk update \
     && apk add git \
-    && apk add jq
+    && apk add jq \
+    && apk add gh
 
 # install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
