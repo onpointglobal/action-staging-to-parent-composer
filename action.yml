@@ -6,11 +6,11 @@ inputs:
     description: 'Name of the branch, same ass environment. Available: [staging, production]'
     required: true
     default: ''
-  composer_path:  # folder of the parent repo to update composer dependency
+  composer_parent_path:  # folder of the parent repo to update composer dependency
     description: 'Where is the composer file to update'
     required: true
     default: ''
-  project_path:  # folder of the parent repo to update composer dependency
+  composer_project_path:  # folder of the parent repo to update composer dependency
     description: 'Where is the proyect cloned'
     required: true
     default: ''
@@ -23,6 +23,6 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.branch }}
-    - ${{ inputs.composer_path }}
-    - ${{ inputs.project_path }}
+    - ${{ inputs.composer_parent_path }}
+    - ${{ inputs.composer_project_path }}
     - ${{ inputs.secret }}
