@@ -17,6 +17,7 @@ RUN chmod +x gh_1.7.0_linux_386/bin/gh
 RUN cp gh_1.7.0_linux_386/bin/gh /usr/local/bin/
 RUN rm -rf gh_1.7.0_linux_386.tar.gz && rm -rf gh_1.7.0_linux_386
 RUN gh --version
+RUN ls
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
 
