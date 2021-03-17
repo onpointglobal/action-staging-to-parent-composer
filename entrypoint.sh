@@ -5,6 +5,7 @@ composer_parent_path=$2
 composer_project_path=$3
 secret=$4
 composer_package_name=$(jq '.name' $composer_project_path/composer.json)
+echo $composer_package_name
 git config --global user.name github-actions
 git config --global user.email github-actions@github.com
 echo -n $secret >> token.txt
