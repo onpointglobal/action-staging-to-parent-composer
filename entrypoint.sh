@@ -11,7 +11,6 @@ echo -n $secret >> token.txt
 gh auth login --with-token $secret
 rm token.txt
 cd $composer_path
-cat composer.json
 ls
 composer config --global github-oauth.github.com $secret
 composer self-update 2.0.9
