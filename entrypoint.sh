@@ -13,5 +13,5 @@ rm token.txt
 composer config --global github-oauth.github.com $secret
 export COMPOSER=composer-$branch.json
 cd $composer_parent_path && composer update "$composer_package_name"
-git commit -am "${{ github.event.head_commit.message }} - update composer with $composer_package_name"
+git commit -am "update composer.lock with $composer_package_name"
 git push origin $branch
