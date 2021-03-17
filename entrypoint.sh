@@ -10,11 +10,10 @@ git config --global user.email github-actions@github.com
 echo -n $secret >> token.txt
 gh auth login --with-token $secret
 rm token.txt
-cd $composer_path
-ls
 composer config --global github-oauth.github.com $secret
 composer self-update 2.0.9
-cat wp-config.php
+cd $composer_path && composer update
+ls
 # export COMPOSER=composer-$branch.json
 # composer update "$composer_package_name"
 # git commit -am "${{ github.event.head_commit.message }} - update composer with $composer_package_name"
