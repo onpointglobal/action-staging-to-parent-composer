@@ -14,7 +14,8 @@ cd $composer_path
 ls
 composer config --global github-oauth.github.com $secret
 composer self-update 2.0.9
-export COMPOSER=composer-$branch.json
-composer update "$composer_package_name"
-git commit -am "${{ github.event.head_commit.message }} - update composer with $composer_package_name"
-git push origin $branch
+cat wp-config.php
+# export COMPOSER=composer-$branch.json
+# composer update "$composer_package_name"
+# git commit -am "${{ github.event.head_commit.message }} - update composer with $composer_package_name"
+# git push origin $branch
