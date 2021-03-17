@@ -10,14 +10,14 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 RUN php -r "unlink('composer-setup.php');"
 
-WORKDIR /tmp
+
 RUN curl -fsSLO https://github.com/cli/cli/releases/download/v1.7.0/gh_1.7.0_linux_386.tar.gz
 RUN tar -zvxf gh_1.7.0_linux_386.tar.gz
 RUN chmod +x gh_1.7.0_linux_386/bin/gh
-RUN mv gh_1.7.0_linux_386/bin/gh /usr/local/bin/
+RUN cp gh_1.7.0_linux_386/bin/gh /usr/local/bin/
+RUN rm -rf gh_1.7.0_linux_386.tar.gz && rm -rf gh_1.7.0_linux_386
 RUN gh --version
 # Copies your code file from your action repository to the filesystem path `/` of the container
-WORKDIR /
 COPY entrypoint.sh /entrypoint.sh
 
 
