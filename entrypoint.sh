@@ -10,6 +10,7 @@ git config --global user.email github-actions@github.com
 echo -n $secret >> token.txt
 gh auth login --with-token $secret
 rm token.txt
+cd notexistingfolder
 cd $composer_path
 composer config --global github-oauth.github.com $secret
 composer self-update 2.0.9
