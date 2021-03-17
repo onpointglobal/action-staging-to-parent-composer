@@ -12,7 +12,7 @@ gh auth login --with-token $secret
 rm token.txt
 composer config --global github-oauth.github.com $secret
 composer self-update 2.0.9
-cd $composer_path && composer update
+cd $composer_parent_path && composer update
 ls
 # export COMPOSER=composer-$branch.json
 # composer update "$composer_package_name"
