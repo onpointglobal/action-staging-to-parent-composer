@@ -18,6 +18,10 @@ inputs:
     description: 'Secret to update parent repo'
     required: true
     default: ''
+  version:  # id of input
+    description: 'Tag version'
+    required: true
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -26,3 +30,4 @@ runs:
     - ${{ inputs.composer_parent_path }}
     - ${{ inputs.composer_project_path }}
     - ${{ inputs.secret }}
+    - ${{ inputs.version }}
