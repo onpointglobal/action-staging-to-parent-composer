@@ -14,10 +14,14 @@ if [ ! -z "${tag_version}" ]; then
 fi
 echo "$update_arg"
 echo "$tag_version"
+composer --version
 
+cd $composer_parent_path
+pwd
+composer set-version
 export COMPOSER=composer-$branch.json
 composer config --global github-oauth.github.com $secret
-cd $composer_parent_path && composer update $update_arg
+composer update $update_arg
 
 git config --global user.name github-actions
 git config --global user.email github-actions@github.com
