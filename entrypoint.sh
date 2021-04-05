@@ -7,7 +7,7 @@ secret=$4
 tag_version=$5
 composer_package_name=$(jq -r '.name' "$composer_project_path"/composer.json)
 update_arg="$composer_package_name"
-if [ -z "${tag_version}" ]; then
+if [ ! -z "${tag_version}" ]; then
     echo "tag_version is not empty"
     composer_version=$(echo $tag_version | cut -c 2-) 
     update_arg="$composer_package_name":"$composer_version"  
