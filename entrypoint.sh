@@ -15,7 +15,6 @@ if [ ! -z "${tag_version}" ]; then
 fi
 
 cd $composer_parent_path
-composer set-version
 composer config --global github-oauth.github.com $secret
 composer config --global http-basic.wpmudev.com $composer_wpmudev null
 composer require $update_arg
