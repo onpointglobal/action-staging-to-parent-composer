@@ -13,14 +13,9 @@ if [ ! -z "${tag_version}" ]; then
     composer_version=$(echo $tag_version | cut -c 2-) 
     update_arg="$composer_package_name":"$composer_version"  
 fi
-echo "$update_arg"
-echo "$tag_version"
-composer --version
 
 cd $composer_parent_path
-pwd
 composer set-version
-export COMPOSER=composer-$branch.json
 composer config --global github-oauth.github.com $secret
 composer config --global http-basic.wpmudev.com $composer_wpmudev null
 composer require $update_arg
