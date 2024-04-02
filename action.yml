@@ -1,34 +1,34 @@
 # action.yml
-name: 'Staging to Parent with composer'
-description: 'Update parent on every staging change.'
+name: "Staging to Parent with composer"
+description: "Update parent on every staging change."
 inputs:
-  branch:  # name of the branch or env
-    description: 'Name of the branch, same ass environment. Available: [staging, production]'
+  branch: # name of the branch or env
+    description: "Name of the branch, same ass environment. Available: [staging, production]"
     required: true
-    default: ''
-  composer_parent_path:  # folder of the parent repo to update composer dependency
-    description: 'Where is the composer file to update'
+    default: ""
+  composer_parent_path: # folder of the parent repo to update composer dependency
+    description: "Where is the composer file to update"
     required: true
-    default: ''
-  composer_project_path:  # folder of the parent repo to update composer dependency
-    description: 'Where is the proyect cloned'
+    default: ""
+  composer_project_path: # folder of the parent repo to update composer dependency
+    description: "Where is the proyect cloned"
     required: true
-    default: ''
-  secret:  # id of input
-    description: 'Secret to update parent repo'
+    default: ""
+  secret: # id of input
+    description: "Secret to update parent repo"
     required: true
-    default: ''
-  version:  # id of input
-    description: 'Tag version'
+    default: ""
+  version: # id of input
+    description: "Tag version"
     required: true
-    default: ''
-  composer_wpmudev:  # id of input
-    description: 'Secret to resolve wpmudev plugin'
+    default: ""
+  composer_wpmudev: # id of input
+    description: "Secret to resolve wpmudev plugin"
     required: true
-    default: ''
+    default: ""
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
     - ${{ inputs.branch }}
     - ${{ inputs.composer_parent_path }}
@@ -36,3 +36,4 @@ runs:
     - ${{ inputs.secret }}
     - ${{ inputs.version }}
     - ${{ inputs.composer_wpmudev }}
+    - ${{ secrets.YOAST_PREMIUM }}
