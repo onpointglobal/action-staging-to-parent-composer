@@ -9,7 +9,9 @@ composer_wpmudev=$6
 composer_package_name=$(jq -r '.name' "$composer_project_path"/composer.json)
 update_arg="$composer_package_name"
 YOAST_PREMIUM=${YOAST_PREMIUM}
+echo "token1"
 echo $YOAST_PREMIUM
+echo "token2"
 
 if [ ! -z "${tag_version}" ]; then
     echo "tag_version is not empty"
