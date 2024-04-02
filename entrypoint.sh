@@ -9,6 +9,7 @@ composer_wpmudev=$6
 composer_package_name=$(jq -r '.name' "$composer_project_path"/composer.json)
 update_arg="$composer_package_name"
 YOAST_PREMIUM=${YOAST_PREMIUM}
+echo YOAST_PREMIUM
 
 if [ ! -z "${tag_version}" ]; then
     echo "tag_version is not empty"
@@ -19,7 +20,7 @@ fi
 cd $composer_parent_path
 composer config --global github-oauth.github.com $secret
 composer config --global http-basic.wpmudev.com $composer_wpmudev null
-composer config --global http-basic.my.yoast.com token $YOAST_PREMIUM
+composer config --global http-basic.my.yoast.com token "$YOAST_PREMIUM"
 composer require $update_arg
 
 git config --global user.name github-actions
