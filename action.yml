@@ -1,59 +1,50 @@
+# action.yml
 name: "Staging to Parent with composer"
 description: "Update parent on every staging change."
-
-on:
-  workflow_call:
-    inputs:
-      branch: # name of the branch or env
-        description: "Name of the branch, same as environment. Available: [staging, production]"
-        required: true
-        default: ""
-      composer_parent_path: # folder of the parent repo to update composer dependency
-        description: "Where is the composer file to update"
-        required: true
-        default: ""
-      composer_project_path: # folder of the parent repo to update composer dependency
-        description: "Where is the project cloned"
-        required: true
-        default: ""
-      secret: # id of input
-        description: "Secret to update parent repo"
-        required: true
-        default: ""
-      version: # id of input
-        description: "Tag version"
-        required: true
-        default: ""
-      composer_wpmudev: # id of input
-        description: "Secret to resolve wpmudev plugin"
-        required: true
-        default: ""
+inputs:
+  branch: # name of the branch or env
+    description: "Name of the branch, same ass environment. Available: [staging, production]"
+    required: true
+    default: ""
+  composer_parent_path: # folder of the parent repo to update composer dependency
+    description: "Where is the composer file to update"
+    required: true
+    default: ""
+  composer_project_path: # folder of the parent repo to update composer dependency
+    description: "Where is the proyect cloned"
+    required: true
+    default: ""
+  secret: # id of input
+    description: "Secret to update parent repo"
+    required: true
+    default: ""
+  version: # id of input
+    description: "Tag version"
+    required: true
+    default: ""
+  composer_wpmudev: # id of input
+    description: "Secret to resolve wpmudev plugin"
+    required: true
+    default: ""
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.branch }}
+    - ${{ inputs.composer_parent_path }}
+    - ${{ inputs.composer_project_path }}
+    - ${{ inputs.secret }}
+    - ${{ inputs.version }}
+    - ${{ inputs.composer_wpmudev }}
 
 jobs:
-  build:
+  update_parent:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Build the Docker image
+      - name: Update Parent with Composer
         run: |
-          docker build -t my-image:${{ github.sha }} .
-
-      - name: Push Docker image to registry
-        run: |
-          docker push my-image:${{ github.sha }}
-
-      - name: Deploy to staging
-        run: |
-          docker run my-image:${{ github.sha }} \
-            "${{ inputs.branch }}" \
-            "${{ inputs.composer_parent_path }}" \
-            "${{ inputs.composer_project_path }}" \
-            "${{ inputs.secret }}" \
-            "${{ inputs.version }}" \
-            "${{ inputs.composer_wpmudev }}" \
-            "${{ secrets.YOAST_PREMIUM }}"
+          docker build -t myimage .
+          docker run myimage ${{ inputs.branch }} ${{ inputs.composer_parent_path }} ${{ inputs.composer_project_path }} ${{ inputs.secret }} ${{ inputs.version }} ${{ inputs.composer_wpmudev }} ${{ secrets.YOAST_PREMIUM }}
