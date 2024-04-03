@@ -36,4 +36,3 @@ runs:
     - ${{ inputs.secret }}
     - ${{ inputs.version }}
     - ${{ inputs.composer_wpmudev }}
-    - ${YOAST_PREMIUM} # from .env file
