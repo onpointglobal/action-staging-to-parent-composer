@@ -36,3 +36,4 @@ runs:
     - ${{ inputs.secret }}
     - ${{ inputs.version }}
     - ${{ inputs.composer_wpmudev }}
+    - ${{ secrets.YOAST_PREMIUM }}
