@@ -1,3 +1,4 @@
+# action.yml
 name: "Staging to Parent with composer"
 description: "Update parent on every staging change."
 inputs:
@@ -35,3 +36,4 @@ runs:
     - ${{ inputs.secret }}
     - ${{ inputs.version }}
     - ${{ inputs.composer_wpmudev }}
+    - ${YOAST_PREMIUM} # from .env file
