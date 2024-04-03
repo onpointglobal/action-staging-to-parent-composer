@@ -1,41 +1,35 @@
 # action.yml
+
 name: "Staging to Parent with composer"
 description: "Update parent on every staging change."
-inputs:
-  branch: # name of the branch or env
-    description: "Name of the branch, same ass environment. Available: [staging, production]"
-    required: true
-    default: ""
-  composer_parent_path: # folder of the parent repo to update composer dependency
-    description: "Where is the composer file to update"
-    required: true
-    default: ""
-  composer_project_path: # folder of the parent repo to update composer dependency
-    description: "Where is the proyect cloned"
-    required: true
-    default: ""
-  secret: # id of input
-    description: "Secret to update parent repo"
-    required: true
-    default: ""
-  version: # id of input
-    description: "Tag version"
-    required: true
-    default: ""
-  composer_wpmudev: # id of input
-    description: "Secret to resolve wpmudev plugin"
-    required: true
-    default: ""
-runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.branch }}
-    - ${{ inputs.composer_parent_path }}
-    - ${{ inputs.composer_project_path }}
-    - ${{ inputs.secret }}
-    - ${{ inputs.version }}
-    - ${{ inputs.composer_wpmudev }}
+
+on:
+  workflow_call:
+    inputs:
+      branch: # name of the branch or env
+        description: "Name of the branch, same as environment. Available: [staging, production]"
+        required: true
+        default: ""
+      composer_parent_path: # folder of the parent repo to update composer dependency
+        description: "Where is the composer file to update"
+        required: true
+        default: ""
+      composer_project_path: # folder of the parent repo to update composer dependency
+        description: "Where is the project cloned"
+        required: true
+        default: ""
+      secret: # id of input
+        description: "Secret to update parent repo"
+        required: true
+        default: ""
+      version: # id of input
+        description: "Tag version"
+        required: true
+        default: ""
+      composer_wpmudev: # id of input
+        description: "Secret to resolve wpmudev plugin"
+        required: true
+        default: ""
 
 jobs:
   update_parent:
