@@ -1,7 +1,7 @@
 # action.yml
 name: "Staging to Parent with composer"
 description: "Update parent on every staging change."
-env:
+secrets:
   YOAST_PREMIUM: ${{ secrets.YOAST_PREMIUM }}
 inputs:
   branch: # name of the branch or env
