@@ -16,7 +16,6 @@ echo "composer_project_path value: $composer_project_path"
 echo "secret value: $secret"
 echo "tag_version value: $tag_version"
 echo "composer_wpmudev value: $composer_wpmudev"
-echo "yoast_premium value: $yoast_premium"
 
 echo "token1"
 echo "yoast_premium value: $yoast_premium"
