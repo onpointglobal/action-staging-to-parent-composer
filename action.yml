@@ -1,6 +1,8 @@
 # action.yml
 name: "Staging to Parent with composer"
 description: "Update parent on every staging change."
+env:
+  YOAST_PREMIUM: ${{ secrets.YOAST_PREMIUM }}
 inputs:
   branch: # name of the branch or env
     description: "Name of the branch, same ass environment. Available: [staging, production]"
@@ -29,7 +31,7 @@ inputs:
   yoast_premium:
     description: "Token for YOAST_PREMIUM"
     required: true
-    default: ${{ secrets.YOAST_PREMIUM }} # Reference the secret here
+    default: $YOAST_PREMIUM # Reference the secret here
 runs:
   using: "docker"
   image: "Dockerfile"

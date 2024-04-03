@@ -11,7 +11,7 @@ composer_package_name=$(jq -r '.name' "$composer_project_path"/composer.json)
 update_arg="$composer_package_name"
 
 echo "token1"
-echo "YOAST_PREMIUM value: $yoast_premium"
+echo "YOAST_PREMIUM value: $YOAST_PREMIUM"
 echo "token2"
 
 if [ ! -z "${tag_version}" ]; then
@@ -23,7 +23,7 @@ fi
 cd $composer_parent_path
 composer config --global github-oauth.github.com $secret
 composer config --global http-basic.wpmudev.com $composer_wpmudev null
-composer config --global http-basic.my.yoast.com token "$yoast_premium"
+composer config --global http-basic.my.yoast.com token "$YOAST_PREMIUM"
 composer require $update_arg
 
 git config --global user.name github-actions
