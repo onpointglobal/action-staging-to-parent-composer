@@ -1,7 +1,3 @@
-# action.yml
-env:
-  YOAST_PREMIUM: ${{ secrets.YOAST_PREMIUM }}
-
 name: "Staging to Parent with composer"
 description: "Update parent on every staging change."
 inputs:
@@ -32,6 +28,8 @@ inputs:
 runs:
   using: "docker"
   image: "Dockerfile"
+  env: # Environment variables for the action
+    YOAST_PREMIUM: ${{ secrets.YOAST_PREMIUM }} # Inject the secret as an environment variable
   args:
     - ${{ inputs.branch }}
     - ${{ inputs.composer_parent_path }}
