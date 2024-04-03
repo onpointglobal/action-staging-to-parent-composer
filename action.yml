@@ -29,7 +29,7 @@ inputs:
   yoast_premium:
     description: "Token for YOAST_PREMIUM"
     required: true
-    default: "${{ secrets.YOAST_PREMIUM }}" # Corrected syntax to reference the secret
+    default: ${{ secrets.YOAST_PREMIUM }} # Reference the secret here
 runs:
   using: "docker"
   image: "Dockerfile"
