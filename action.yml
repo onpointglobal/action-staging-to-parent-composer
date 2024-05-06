@@ -26,10 +26,6 @@ inputs:
     description: "Secret to resolve wpmudev plugin"
     required: true
     default: ""
-  yoast_premium: # secret token for yoast
-    description: "Github Secret from the other repo to use Yoast Premium"
-    required: true
-    default: ""
 runs:
   using: "docker"
   image: "Dockerfile"
@@ -40,4 +36,3 @@ runs:
     - ${{ inputs.secret }}
     - ${{ inputs.version }}
     - ${{ inputs.composer_wpmudev }}
-    - ${{ inputs.yoast_premium }}

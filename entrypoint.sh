@@ -6,7 +6,6 @@ composer_project_path=$3
 secret=$4
 tag_version=$5
 composer_wpmudev=$6
-yoast_premium=$7
 composer_package_name=$(jq -r '.name' "$composer_project_path"/composer.json)
 update_arg="$composer_package_name"
 
@@ -19,7 +18,6 @@ fi
 cd $composer_parent_path
 composer config --global github-oauth.github.com $secret
 composer config --global http-basic.wpmudev.com $composer_wpmudev null
-composer config --global http-basic.my.yoast.com token "$yoast_premium"
 composer require $update_arg
 
 git config --global user.name github-actions
