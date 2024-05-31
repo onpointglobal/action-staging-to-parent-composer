@@ -1,5 +1,5 @@
 # Container image that runs your code
-FROM composer:2.0.13
+FROM composer:2.2.21
 
 RUN apk update \
     && apk add git \
