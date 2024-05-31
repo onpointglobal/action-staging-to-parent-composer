@@ -21,6 +21,7 @@ composer config --global http-basic.wpmudev.com $composer_wpmudev null
 composer require $update_arg
 
 git config --global user.name github-actions
+git config --global --add safe.directory /github/workspace/main
 git config --global user.email github-actions@github.com
 git config --get remote.origin.url
 git status
